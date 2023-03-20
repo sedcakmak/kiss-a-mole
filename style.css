@@ -1,0 +1,38 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 404px 404px 404px;
+  grid-template-rows: 202px 202px;
+  margin: auto;
+}
+
+.mound {
+  /* background-image: url(images/Delik.png);
+  background-size: 20% 60%;
+  background-repeat: no-repeat;
+  height: 200px; */
+  /* background-image: url(images/Delik.png);
+  background-size: 20% 60%;
+  background-repeat: no-repeat;
+  height: 200px; */
+  position: relative;
+}
+
+.mound-img {
+  width: 80%;
+  height: 80%;
+  z-index: 5;
+}
+
+.rot {
+  transform: rotateY(180deg);
+  transform-origin: center;
+}
+
+.mole-img {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 12px;
+  left: 5rem;
+  z-index: -1;
+}
