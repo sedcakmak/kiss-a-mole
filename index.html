@@ -5,45 +5,70 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kiss A Mole Game</title>
+  <title>Smack A Mole Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Old+Standard+TT:wght@400;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- <div class="score">
-    <div class="timer">TIMER</div>
-    <div class="score">SCORE</div>
-  </div> -->
+  <div class="board">
+    <div class="timer">
+      <img src="./images/timer.svg" alt="timer" class="timer-img" />
+      Timer: 17
+    </div>
+    <div class="score">
+      <img src="./images/smack.svg" alt="smack" class="smack" />
+      Score: 5
+    </div>
+    <div class="button-wrapper">
+      <button class="start-button">Start Game</button>
+    </div>
+  </div>
+
   <div class="wrapper">
-    <div class="mound">
-      <img src="/images/mould.svg" class="mound-img" alt="mound" />
+
+    <div class="mound grid1">
+      <img src="/images/delik.svg" class="mound-img" alt="mound" />
+
       <div class="mole-wrapper">
         <img src="/images/mole.svg" class="mole-img" alt="mole" />
       </div>
 
     </div>
-    <div class="mound">
-      <img src="/images/mould.svg" class="mound-img rot" alt="mound" />
+    <div class="mound grid2">
+      <img src="/images/delik.svg" class="mound-img rot" alt="mound" />
+      <div class="mole-wrapper"><img src="./images/mole.svg" class="mole-img" alt="mole" /></div>
 
+    </div>
+
+    <div class="mound grid3">
+      <img src="/images/delik.svg" class="mound-img" alt="mound" />
       <div class="mole-wrapper"><img src="./images/mole.svg" class="mole-img" alt="mole" /></div>
     </div>
-    <div class="mound">
-      <img src="/images/mould.svg" class="mound-img" alt="mound" />
+    <div class="mound grid4">
+      <img src="/images/delik.svg" class="mound-img rot" alt="mound" />
       <div class="mole-wrapper"><img src="./images/mole.svg" class="mole-img" alt="mole" /></div>
     </div>
-    <div class="mound">
-      <img src="/images/Delik.png" class="mound-img rot" alt="mound" />
+    <div class="mound grid5">
+      <img src="/images/delik.svg" class="mound-img" alt="mound" />
       <div class="mole-wrapper"><img src="./images/mole.svg" class="mole-img" alt="mole" /></div>
     </div>
-    <div class="mound">
-      <img src="/images/Delik.png" class="mound-img" alt="mound" />
-      <div class="mole-wrapper"><img src="./images/mole.svg" class="mole-img" alt="mole" /></div>
-    </div>
-    <div class="mound">
-      <img src="/images/Delik.png" class="mound-img rot" alt="mound" />
+    <div class="mound grid6">
+      <img src="/images/delik.svg" class="mound-img rot" alt="mound" />
       <div class="mole-wrapper"><img src="/images/mole.svg" class="mole-img" alt="mole" /></div>
     </div>
   </div>
+
+
+
+
+
+
+
+
   <script type="text/javascript" src="index.js"></script>
 </body>
 
