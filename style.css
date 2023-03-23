@@ -5,52 +5,121 @@ body {
 }
 
 .wrapper {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: flex-start;
   text-align: center;
+  margin-top: 4rem; */
 
   /* display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+
   margin-left: 8rem;
-  border: 1px solid purple; */
-  /* grid-template-columns: repeat(3, minmax(0, 1fr));
+  row-gap: 12rem;
+  align-items: center;
+  justify-items: end;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: repeat(2, minmax(0, 1fr)); */
+
+  /* grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr); */
+
+  gap: 14rem;
+  margin: 0 auto;
+  width: 900px;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.board {
+  position: absolute;
+  bottom: 50%;
+  left: 3%;
+  line-height: 2;
 }
 
 .mound {
-  position: relative;
+  border: 1px solid salmon;
+  /* position: relative;
   height: 20%;
   width: 26%;
-  overflow: hidden;
+  height: 120px;
+  width: 200px;
+  background: url(./images/dirt.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 2; */
 
   /* height: 323px;
   width: 230px; */
+  position: relative;
+  flex: 1 0 33.33%;
+  /* overflow: hidden; */
+}
+.mound:after {
+  display: block;
+  background: url(./images/dirt.svg) no-repeat;
+  background-size: cover;
+  content: "";
+  width: 100%;
+  height: 212px;
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+  border: 1px solid black;
 }
 
-.mound-img {
+/* .mole-wrapper {
+  background: url(./images/mole.svg) no-repeat;
+  background-size: 60%;
+  position: absolute;
+  /* top: 100px; */
+/* bottom: -8px;
+  left: 58px;
+  width: 100%;
+  height: 100px;
+  transition: all 0.4s;
+} */
+
+/* .mound-img {
   width: 83%;
   height: 70%;
   z-index: 5;
-}
+  border: 1px solid black;
+  position: absolute;
+} */
 
 .rot {
   transform: rotateY(180deg);
   transform-origin: center;
 }
 
-.mole-img {
-  width: 40%;
-  height: 34%;
+/* .mole-img {
   position: absolute;
-  top: 200px; /*125 gorunuyor */
-  left: 8rem;
-  z-index: -1;
-}
 
+  width: 51%;
+  height: 65%;
+  left: 5rem;
+  z-index: 1;
+  transition: all 0.4s ease-out;
+  bottom: 10px;
+} */
+
+.mole-img {
+  left: 62px;
+  top: 135px;
+  width: 65%;
+  height: 85%;
+  position: relative;
+  transition: all 0.4s ease-out;
+}
+.up {
+  /* top: 125px; */
+  top: 35px;
+}
 .anim {
   -webkit-animation: appear 3s ease-out;
   animation: appear 3s ease-out;
@@ -80,13 +149,6 @@ body {
   100% {
     top: 200px;
   }
-}
-
-.board {
-  position: absolute;
-  bottom: 50%;
-  left: 3%;
-  line-height: 2;
 }
 
 .timer {

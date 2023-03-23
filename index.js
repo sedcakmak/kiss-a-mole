@@ -1,15 +1,46 @@
 let moles = document.querySelectorAll(".mole-img");
 const startButton = document.querySelector(".start-button");
 let timerEle = document.querySelector("#timer");
-let scoreEle = document.getElementById("score");
+const holes = document.querySelectorAll(".mound");
+const scoreBoard = document.querySelector("#score");
+
 let timeUp = false;
+let lastMole;
+let score = 0;
 
 startButton.addEventListener("click", startGame);
 
+function randomTime(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+function randomMole(moles) {
+  const idx = Math.floor(Math.random() * moles.length);
+  const mole = moles[idx];
+  if (mole === lastMole) {
+    console.log("Ah nah thats the same one bud");
+    return randomMole(moles);
+  }
+  lastMole = mole;
+  return mole;
+}
+
+function peep() {
+  const time = randomTime(400, 2000); //200, 1000
+  const mole = randomMole(moles);
+  mole.classList.add("up");
+  setTimeout(() => {
+    mole.classList.remove("up");
+    if (!timeUp) peep();
+  }, time);
+}
+
 function startGame() {
-  console.log("calisiyor mu??");
+  scoreBoard.textContent = 0;
+  timerEle.innerHTML = 30;
+  score = 0;
+  peep();
   countdown();
-  setInterval(enterMoles, 3000);
 }
 
 function countdown() {
@@ -21,28 +52,34 @@ function countdown() {
       clearInterval(countdown);
       timeUp = true;
     }
-  }, 1000);
+  }, 30000);
 }
 
-function randomTime(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
+function bonk(e) {
+  // if (!e.isTrusted) return; // cheater!
+  score++;
+  console.log(e.target);
+  this.parentNode.classList.remove("up");
+  scoreBoard.textContent = score;
 }
 
-function enterMoles() {
-  if (!timeUp) {
-    moles.forEach((mole) => mole.classList.remove("anim"));
-    const randomNumbers = Array.from({ length: 6 }, () =>
-      Math.floor(Math.random() * 6)
-    );
-    const time = randomTime(200, 1000);
+moles.forEach((mole) => mole.addEventListener("click", bonk));
 
-    randomNumbers.forEach((number) => {
-      setTimeout(function () {
-        moles[number].classList.add("anim");
-      }, 1000);
-    });
-  }
-}
+// function enterMoles() {
+//   if (!timeUp) {
+//     moles.forEach((mole) => mole.classList.remove("anim"));
+//     const randomNumbers = Array.from({ length: 6 }, () =>
+//       Math.floor(Math.random() * 6)
+//     );
+//     const time = randomTime(200, 1000);
+
+//     randomNumbers.forEach((number) => {
+//       setTimeout(function () {
+//         moles[number].classList.add("anim");
+//       }, 1000);
+//     });
+//   }
+// }
 
 //   let numbers = [];
 //   while (numbers.length < moles.length) {
@@ -70,3 +107,30 @@ function enterMoles() {
 //   mole.classList.add("anim");
 // }
 //randomMole();
+
+// function startGame() {
+//   console.log("calisiyor mu??");
+//   countdown();
+//   setInterval(enterMoles, 3000);
+// }
+
+// function randomTime(min, max) {
+//   return Math.round(Math.random() * (max - min) + min);
+// }
+
+// function enterMoles() {
+//   const randomNumbers = Array.from({ length: 6 }, () =>
+//     Math.floor(Math.random() * 6)
+//   );
+//   const time = randomTime(200, 1000);
+
+//   randomNumbers.forEach((number) => {
+//     moles[number].classList.add("up");
+//   });
+//   setTimeout(function () {
+//     moles.forEach((mole) => {
+//       mole.classList.remove("up");
+//       if (!timeup) enterMoles();
+//     });
+//   }, time);
+// }
