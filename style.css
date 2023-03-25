@@ -1,158 +1,82 @@
+* {
+  box-sizing: border-box;
+}
 body {
   background-image: url(/images/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.wrapper {
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: flex-start;
-  text-align: center;
-  margin-top: 4rem; */
-
-  /* display: grid;
-
-  margin-left: 8rem;
-  row-gap: 12rem;
-  align-items: center;
-  justify-items: end;
-
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(0, 1fr)); */
-
-  /* grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr); */
-
-  gap: 14rem;
+main {
+  width: 55%;
   margin: 0 auto;
-  width: 900px;
-  height: 300px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .board {
   position: absolute;
   bottom: 50%;
   left: 3%;
+  top: 3%;
   line-height: 2;
 }
 
-.mound {
-  border: 1px solid salmon;
-  /* position: relative;
-  height: 20%;
-  width: 26%;
-  height: 120px;
-  width: 200px;
-  background: url(./images/dirt.svg);
-  background-repeat: no-repeat;
+#play-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ground {
+  display: inline-flex;
+  flex: 1 1 25%;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  overflow: hidden;
+}
+
+.dirt,
+.mole {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
   background-size: contain;
-  z-index: 2; */
-
-  /* height: 323px;
-  width: 230px; */
-  position: relative;
-  flex: 1 0 33.33%;
-  /* overflow: hidden; */
-}
-.mound:after {
-  display: block;
-  background: url(./images/dirt.svg) no-repeat;
-  background-size: cover;
-  content: "";
-  width: 100%;
-  height: 212px;
-  position: absolute;
-  z-index: 2;
-  bottom: -30px;
-  border: 1px solid black;
+  background-repeat: no-repeat;
 }
 
-/* .mole-wrapper {
-  background: url(./images/mole.svg) no-repeat;
-  background-size: 60%;
-  position: absolute;
-  /* top: 100px; */
-/* bottom: -8px;
-  left: 58px;
-  width: 100%;
-  height: 100px;
-  transition: all 0.4s;
-} */
-
-/* .mound-img {
-  width: 83%;
-  height: 70%;
-  z-index: 5;
-  border: 1px solid black;
-  position: absolute;
-} */
-
-.rot {
-  transform: rotateY(180deg);
-  transform-origin: center;
-}
-
-/* .mole-img {
-  position: absolute;
-
-  width: 51%;
-  height: 65%;
-  left: 5rem;
+.dirt {
+  background-image: url("./images/dirt.svg");
   z-index: 1;
-  transition: all 0.4s ease-out;
-  bottom: 10px;
-} */
-
-.mole-img {
-  left: 62px;
-  top: 135px;
-  width: 65%;
-  height: 85%;
-  position: relative;
-  transition: all 0.4s ease-out;
+  background-position: center 113%;
 }
+
+.mole {
+  background-image: url(./images/mole.svg);
+  transition: all 0.1s ease;
+  top: 100%;
+  background-position: bottom;
+  background-size: 73%;
+}
+
+.ground.active .mole {
+  top: 0;
+}
+
 .up {
   /* top: 125px; */
   top: 35px;
 }
-.anim {
-  -webkit-animation: appear 3s ease-out;
-  animation: appear 3s ease-out;
-}
-
-@-webkit-keyframes appear {
-  5% {
-    top: 125px;
-  }
-
-  90% {
-    top: 125px;
-  }
-  100% {
-    top: 200px;
-  }
-}
-
-@keyframes appear {
-  5% {
-    top: 125px;
-  }
-
-  90% {
-    top: 125px;
-  }
-  100% {
-    top: 200px;
-  }
-}
 
 .timer {
-  width: 200px;
+  width: 250px;
   padding: 1rem 2rem 0 1rem;
   margin-bottom: 1rem;
   border: 3px solid #fbd20a;
@@ -167,6 +91,33 @@ body {
     rgba(249, 138, 159, 1) 0%,
     rgba(251, 210, 10, 1) 100%
   );
+}
+
+.popup {
+  transform: scale(1);
+  -webkit-animation: popupAnim 0.2s backwards;
+  animation: popupAnim 0.2s backwards;
+  transition: all 0.2s;
+}
+
+@-webkit-keyframes popupAnim {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(2);
+  }
+}
+
+@keyframes popupAnim {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(2);
+  }
 }
 
 .button-wrapper {
@@ -201,14 +152,6 @@ body {
   color: white;
 }
 
-/* .timer::before {
-  display: block;
-  content: " ";
-  background-image: url("./images/timer.svg");
-  background-size: 28px 28px;
-  height: 28px;
-  width: 28px;
-} */
 .score {
   font-family: "Lobster", cursive, "Old Standard TT", serif;
   font-size: 32px;
