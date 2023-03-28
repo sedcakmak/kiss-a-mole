@@ -365,9 +365,8 @@ main {
 }
 
 .decoration {
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 3rem;
+  transform: scale(0.6);
+  margin-left: -17rem;
 }
 
 .head {

@@ -10,8 +10,18 @@ const kiss = document.getElementById("kiss1");
 const startButton = document.querySelector(".start-button");
 const closeModalButton = document.getElementById("close-btn");
 
+let sound;
+let kissSfx;
+
 window.addEventListener("load", () => {
   startButton.addEventListener("click", () => {
+    sound = new Howl({
+      src: ["./sounds/enter1.wav"],
+      html5: true,
+    });
+    kissSfx = new Howl({
+      src: ["./sounds/kiss.mp3"],
+    });
     startGame();
   });
 });
@@ -44,6 +54,7 @@ function peep() {
   const time = randomTime(800, 1500); //200, 1000
   const ground = randomGround(grounds);
   ground.classList.add("active");
+  sound.play();
   setTimeout(() => {
     ground.classList.remove("active");
     smackImg.classList.remove("popup");
@@ -82,7 +93,7 @@ const startGame = () => {
       if (e.classList.contains("active")) {
         smackImg.classList.add("popup");
         //kiss.style.opacity = "1";
-
+        kissSfx.play();
         kiss.classList.add("animated-kiss");
         count++;
         score.innerHTML = count;
@@ -108,3 +119,5 @@ closeModalButton.onclick = function () {
 //     modal.style.display = "none";
 //   }
 // };
+
+// AUDIO
