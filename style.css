@@ -1,10 +1,15 @@
 * {
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 body {
   background-image: url(/images/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 main {
@@ -74,20 +79,23 @@ main {
 }
 
 .kiss {
-  opacity: 0;
   width: 75px;
-  height: 44px;
+  height: 55px;
 }
 
-.animate {
-  -webkit-animation: slide-up 0.2s both, rotate ease-out 0.5s forwards;
-  animation: slide-up 0.2s both, rotate ease-out 0.5s forwards;
+.kiss.animated-kiss {
+  transform: translateY(0px) !important;
+  transition: translateY 2s;
+  /* -webkit-animation: slide-up 0.6s both, rotate ease-out 0.5s initial;
+  animation: slide-up 0.6s both, rotate ease-out 0.5s initial; */
 }
 
 #kiss1 {
   align-self: center;
-  -webkit-animation-delay: 0s, 1.5s;
-  animation-delay: 0.1s, 1.5s;
+  transform: translateY(400px);
+
+  /* -webkit-animation-delay: 0s, 1.5s;
+  animation-delay: 0.1s, 1.5s; */
 }
 
 #kiss2 {
@@ -104,7 +112,7 @@ main {
 
 @-webkit-keyframes slide-up {
   0% {
-    transform: translate3d(0, 800px, 0);
+    transform: translate3d(0, 1800px, 0);
   }
 
   70% {
@@ -119,7 +127,7 @@ main {
 }
 @keyframes slide-up {
   0% {
-    transform: translate3d(0, 800px, 0);
+    transform: translate3d(0, 1800px, 0);
   }
 
   70% {
@@ -136,8 +144,6 @@ main {
 @-webkit-keyframes rotate {
   50% {
     transform: scale(1.1) rotate(-10deg);
-    fill: #fdf097;
-    opacity: 1;
   }
 
   100% {
@@ -148,8 +154,6 @@ main {
 @keyframes rotate {
   50% {
     transform: scale(1.1) rotate(-10deg);
-    fill: #fdf097;
-    opacity: 1;
   }
   100% {
     transform: scale(1);
@@ -158,11 +162,6 @@ main {
 
 .ground.active .mole {
   top: 0;
-}
-
-.up {
-  /* top: 125px; */
-  top: 35px;
 }
 
 .timer {
@@ -241,6 +240,9 @@ main {
 .start-button:focus {
   color: white;
 }
+.start-button:hover {
+  border: 3px solid rgba(251, 210, 10, 1);
+}
 
 .score {
   font-family: "Lobster", cursive, "Old Standard TT", serif;
@@ -282,7 +284,7 @@ main {
   background-color: #fefefe;
   margin: auto;
   padding: 0;
-  border: 1px solid #888;
+  /* border: 1px solid #888; */
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animateleft;
@@ -290,6 +292,9 @@ main {
   animation-name: animateleft;
   animation-duration: 0.4s;
   z-index: 20;
+  border-top-left-radius: 250px 15px;
+  border-bottom-left-radius: 20px 115px;
+  border-bottom-right-radius: 105px 15px;
 }
 
 /* Add Animation */
@@ -332,19 +337,194 @@ main {
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background: linear-gradient(
+    135deg,
+    rgba(249, 138, 159, 1) 0%,
+    rgba(251, 210, 10, 1) 100%
+  );
   color: white;
 }
 
 .modal-body {
   padding: 2px 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(249, 138, 159, 1) 0%,
+    rgba(251, 210, 10, 1) 100%
+  );
 }
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background: linear-gradient(
+    135deg,
+    rgba(249, 138, 159, 1) 0%,
+    rgba(251, 210, 10, 1) 100%
+  );
   color: white;
 }
+
+.decoration {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 3rem;
+}
+
+.head {
+  /* border-radius: 50%; */
+  background-color: black;
+  width: 6rem;
+  height: 3rem;
+  border-top-left-radius: 3.5rem;
+  border-top-right-radius: 3.5rem;
+  border: 0.3rem solid black;
+  border-bottom: 0;
+  position: relative;
+  transform: rotate(-13deg);
+  top: 22px;
+  z-index: 2;
+}
+
+.left-eye,
+.right-eye {
+  border-radius: 50%;
+  background-color: white;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  color: black;
+  transform: rotate(170deg);
+}
+
+.left-eye {
+  top: 1rem;
+  left: 0.7rem;
+}
+
+.right-eye {
+  top: 1rem;
+  right: 1rem;
+}
+
+.body {
+  border-radius: 50%;
+  background-color: red;
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  z-index: -1;
+}
+
+.small-dots,
+.big-dots,
+.medium-dot {
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.small-dots {
+  width: 1rem;
+  height: 1rem;
+}
+
+.big-dots {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+#small1 {
+  top: 47px;
+  left: 12px;
+}
+
+#small2 {
+  top: 100px;
+  left: 38px;
+}
+
+#big1 {
+  top: 58px;
+  left: 29%;
+}
+
+#big2 {
+  top: 53px;
+  right: 29%;
+}
+#small3 {
+  top: 28px;
+  right: 18px;
+}
+
+#small4 {
+  top: 88px;
+  right: 16px;
+}
+
+.medium-dot {
+  width: 1.25rem;
+  height: 1.25rem;
+  top: 30px;
+  right: 60px;
+}
+
+.left-tentacle,
+.right-tentacle {
+  border-left: 6px solid black;
+  height: 50px;
+  position: relative;
+}
+
+.left-tentacle {
+  transform: rotate(-45deg);
+  bottom: 58px;
+}
+
+.right-tentacle {
+  transform: rotate(45deg);
+  bottom: 48px;
+  left: 60px;
+}
+
+.legs {
+  border-left: 6px solid black;
+  height: 40px;
+  position: relative;
+  z-index: -1;
+}
+
+#leg1 {
+  top: 56px;
+  left: 95px;
+  transform: rotate(65deg);
+}
+#leg2 {
+  top: 56px;
+  left: 83px;
+  transform: rotate(90deg);
+}
+#leg3 {
+  top: 56px;
+  left: 52px;
+  transform: rotate(113deg);
+}
+#leg4 {
+  top: 35px;
+  left: -20px;
+  transform: rotate(55deg);
+}
+#leg5 {
+  bottom: 39px;
+  right: 49px;
+  transform: rotate(62deg);
+}
+#leg6 {
+  bottom: 105px;
+  right: 82px;
+  transform: rotate(90deg);
+}
+
 @media screen and (max-width: 1000px) {
   body {
     background-size: auto;

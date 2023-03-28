@@ -1,14 +1,17 @@
-let timerEle = document.querySelector("#timer");
-let grounds = document.querySelectorAll(".ground");
+const timerEle = document.querySelector("#timer");
+const grounds = document.querySelectorAll(".ground");
+const moles = document.querySelectorAll(".mole");
 const score = document.querySelector("#score");
 const finalScore = document.querySelector("#final-score");
 let timeUp = false;
-let timerImg = document.querySelector(".timer-img");
-let smackImg = document.querySelector(".smack");
-let kisses = document.querySelectorAll(".kiss");
+const timerImg = document.querySelector(".timer-img");
+const smackImg = document.querySelector(".smack");
+const kiss = document.getElementById("kiss1");
+const startButton = document.querySelector(".start-button");
+const closeModalButton = document.getElementById("close-btn");
 
 window.addEventListener("load", () => {
-  document.querySelector(".start-button").addEventListener("click", () => {
+  startButton.addEventListener("click", () => {
     startGame();
   });
 });
@@ -29,17 +32,22 @@ function randomGround(grounds) {
   return ground;
 }
 
+function randomFace() {
+  let faces = ["rotateY(180deg)", "rotateY(0deg)"];
+  for (i = 0; i < moles.length; i++) {
+    moles[i].style.transform = faces[Math.floor(Math.random() * faces.length)];
+  }
+}
+randomFace();
+
 function peep() {
-  const time = randomTime(400, 2000); //200, 1000
+  const time = randomTime(800, 1500); //200, 1000
   const ground = randomGround(grounds);
   ground.classList.add("active");
   setTimeout(() => {
     ground.classList.remove("active");
     smackImg.classList.remove("popup");
-    kisses.forEach((kiss) => {
-      kiss.style.opacity = "0";
-      kiss.classList.remove("animate");
-    });
+
     if (!timeUp) peep();
   }, time);
 }
@@ -55,6 +63,7 @@ function countdown() {
       timerImg.classList.add("popup");
 
       modal.style.display = "block";
+      startButton.disabled = false;
     }
   }, 1000);
 }
@@ -64,8 +73,7 @@ const startGame = () => {
   let count = 0;
   peep();
   countdown();
-
-  const length = grounds.length;
+  startButton.disabled = true;
 
   grounds.forEach((e) => {
     e.addEventListener("click", () => {
@@ -73,54 +81,30 @@ const startGame = () => {
       //So increase the count
       if (e.classList.contains("active")) {
         smackImg.classList.add("popup");
-        kisses.forEach((kiss) => {
-          kiss.style.opacity = "1";
-          kiss.classList.add("animate");
-        });
+        //kiss.style.opacity = "1";
+
+        kiss.classList.add("animated-kiss");
         count++;
         score.innerHTML = count;
         finalScore.innerHTML = count;
       }
     });
   });
-
-  // var interval = setInterval(() => {
-  //   //Generate a random number
-  //   const random = Math.floor(Math.random() * length);
-
-  //   //Remove the active class from every ground
-  //   grounds.forEach((e) => {
-  //     e.classList.remove("active");
-  //   });
-
-  //   //Add the active class to random ground
-  //   grounds[random].classList.add("active");
-  // }, 700);
 };
 
 // FINALE MODAL
 
 var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
 // When the user clicks the button, open the modal
-btn.onclick = function () {
-  modal.style.display = "block";
-};
-
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
+closeModalButton.onclick = function () {
+  window.location.reload();
 };
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
+// window.onclick = function (event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// };
