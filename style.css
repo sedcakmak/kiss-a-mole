@@ -297,7 +297,7 @@ main {
   border-bottom-right-radius: 105px 15px;
 }
 
-/* Add Animation */
+/* Modal Animation */
 @-webkit-keyframes animateleft {
   from {
     left: -300px;
@@ -393,6 +393,8 @@ main {
   position: absolute;
   color: black;
   transform: rotate(170deg);
+  -webkit-animation: squeeze 2s ease-in infinite;
+  animation: squeeze 2s ease-in infinite;
 }
 
 .left-eye {
@@ -403,6 +405,36 @@ main {
 .right-eye {
   top: 1rem;
   right: 1rem;
+}
+
+@-webkit-keyframes squeeze {
+  90% {
+    transform: none;
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateY(3px) scaleY(0.8);
+  }
+  100% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes squeeze {
+  90% {
+    transform: none;
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateY(3px) scaleY(0.8);
+  }
+  100% {
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
 }
 
 .body {
@@ -560,5 +592,33 @@ main {
   .mole-img {
     top: 72px;
     left: 3rem;
+  }
+
+  .decoration {
+    margin: -1rem 18rem;
+  }
+
+  .button-wrapper {
+    height: 100%;
+  }
+  .start-button,
+  .score,
+  .timer {
+    font-size: 20px;
+    height: 100%;
+  }
+
+  #play-area {
+    margin-top: 6rem;
+  }
+  .ground {
+    flex: 1 1 35%;
+  }
+  body {
+    background-position: 15% 0%;
+  }
+
+  .board {
+    height: 20%;
   }
 }
