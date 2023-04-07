@@ -69,6 +69,10 @@ main {
   top: 100%;
   background-position: bottom;
   background-size: 73%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .ground.active .mole {
@@ -91,6 +95,26 @@ main {
     rgba(249, 138, 159, 1) 0%,
     rgba(251, 210, 10, 1) 100%
   );
+}
+
+.best-score {
+  border: 3px solid #fbd20a;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: inset 0px 0px 2px 2px rgba(251, 210, 10, 1);
+  font-family: "Lobster", cursive, "Old Standard TT", serif;
+  font-size: 32px;
+  font-weight: bold;
+  background: url("./images/smack.svg"),
+    linear-gradient(
+      135deg,
+      rgba(249, 138, 159, 1) 0%,
+      rgba(251, 210, 10, 1) 100%
+    );
+  background-position: 5% 100%, 90% 100%;
+  background-repeat: no-repeat, no-repeat;
+  text-align: center;
+  padding-left: 3rem;
 }
 
 .popup {
@@ -124,8 +148,9 @@ main {
   background-color: #1a1901;
   border-radius: 8px;
   /* width: 196px; */
-  width: 100%;
-  margin-bottom: 1rem;
+  width: 50%;
+  height: 100%;
+  margin: auto;
 }
 .start-button {
   border: 3px solid #7a7f43;
@@ -197,7 +222,8 @@ main {
   margin: auto;
   padding: 0;
   /* border: 1px solid #888; */
-  width: 80%;
+  max-width: 80%;
+  width: 50%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animateleft;
   -webkit-animation-duration: 0.4s;
@@ -233,18 +259,26 @@ main {
 }
 
 /* The Close Button */
-.close {
-  color: white;
-  float: right;
+#close-btn {
+  color: #000;
   font-size: 28px;
   font-weight: bold;
+  border-radius: 8px;
+  width: 8rem;
+  border: 1px solid white;
+  box-shadow: inset 0px 0px 2px 2px #7a7f43;
+  margin-bottom: 2rems;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
+#close-btn:hover,
+#close-btn:focus {
   cursor: pointer;
+  border: 1px solid rgba(249, 138, 159, 1);
+  box-shadow: inset 0px 0px 2px 2px rgba(249, 138, 159, 1);
+}
+
+.modal-body p {
+  font-size: 24px;
 }
 
 .modal-header {
@@ -264,6 +298,9 @@ main {
     rgba(249, 138, 159, 1) 0%,
     rgba(251, 210, 10, 1) 100%
   );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .modal-footer {
@@ -484,7 +521,8 @@ main {
 
   .button-wrapper,
   .timer,
-  .score {
+  .score,
+  .best-score {
     width: 50%;
   }
   .wrapper {
@@ -517,7 +555,8 @@ main {
   }
   .start-button,
   .score,
-  .timer {
+  .timer,
+  .best-score {
     font-size: 20px;
     height: 100%;
   }

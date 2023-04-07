@@ -50,7 +50,7 @@ function randomFace() {
 randomFace();
 
 function peep() {
-  const time = randomTime(200, 1000);
+  const time = randomTime(400, 1200);
   const ground = randomGround(grounds);
   ground.classList.add("active");
   sound.play();
