@@ -71,95 +71,6 @@ main {
   background-size: 73%;
 }
 
-.kiss-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.kiss {
-  width: 75px;
-  height: 55px;
-}
-
-.kiss.animated-kiss {
-  transform: translateY(0px) !important;
-  transition: translateY 2s;
-  /* -webkit-animation: slide-up 0.6s both, rotate ease-out 0.5s initial;
-  animation: slide-up 0.6s both, rotate ease-out 0.5s initial; */
-}
-
-#kiss1 {
-  align-self: center;
-  transform: translateY(400px);
-
-  /* -webkit-animation-delay: 0s, 1.5s;
-  animation-delay: 0.1s, 1.5s; */
-}
-
-#kiss2 {
-  align-self: end;
-  -webkit-animation-delay: 0.5s, 2s;
-  animation-delay: 0.5s, 2s;
-}
-
-#kiss3 {
-  align-self: baseline;
-  -webkit-animation-delay: 1s, 2.5s;
-  animation-delay: 1s, 2.5s;
-}
-
-@-webkit-keyframes slide-up {
-  0% {
-    transform: translate3d(0, 1800px, 0);
-  }
-
-  70% {
-    transform: translate3d(0, -20%, 0);
-  }
-  80% {
-    transform: translate3d(0, 20%, 0);
-  }
-  100% {
-    transform: translate3d(0);
-  }
-}
-@keyframes slide-up {
-  0% {
-    transform: translate3d(0, 1800px, 0);
-  }
-
-  70% {
-    transform: translate3d(0, -20%, 0);
-  }
-  80% {
-    transform: translate3d(0, 20%, 0);
-  }
-  100% {
-    transform: translate3d(0);
-  }
-}
-
-@-webkit-keyframes rotate {
-  50% {
-    transform: scale(1.1) rotate(-10deg);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes rotate {
-  50% {
-    transform: scale(1.1) rotate(-10deg);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 .ground.active .mole {
   top: 0;
 }
@@ -235,6 +146,7 @@ main {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
+  color: white;
 }
 
 .start-button:focus {
@@ -363,6 +275,8 @@ main {
   );
   color: white;
 }
+
+/*LADYBUG*/
 
 .decoration {
   transform: scale(0.6);

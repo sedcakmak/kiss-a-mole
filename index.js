@@ -6,7 +6,6 @@ const finalScore = document.querySelector("#final-score");
 let timeUp = false;
 const timerImg = document.querySelector(".timer-img");
 const smackImg = document.querySelector(".smack");
-const kiss = document.getElementById("kiss1");
 const startButton = document.querySelector(".start-button");
 const closeModalButton = document.getElementById("close-btn");
 
@@ -51,7 +50,7 @@ function randomFace() {
 randomFace();
 
 function peep() {
-  const time = randomTime(800, 1500); //200, 1000
+  const time = randomTime(200, 1000);
   const ground = randomGround(grounds);
   ground.classList.add("active");
   sound.play();
@@ -92,9 +91,7 @@ const startGame = () => {
       //So increase the count
       if (e.classList.contains("active")) {
         smackImg.classList.add("popup");
-        //kiss.style.opacity = "1";
         kissSfx.play();
-        kiss.classList.add("animated-kiss");
         count++;
         score.innerHTML = count;
         finalScore.innerHTML = count;
