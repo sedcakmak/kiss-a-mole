@@ -87,8 +87,6 @@ const startGame = () => {
 
   grounds.forEach((e) => {
     e.addEventListener("click", () => {
-      //If ground has active class which means it has mole
-      //So increase the count
       if (e.classList.contains("active")) {
         smackImg.classList.add("popup");
         kissSfx.play();
@@ -104,17 +102,6 @@ const startGame = () => {
 
 var modal = document.getElementById("myModal");
 
-// When the user clicks the button, open the modal
-// When the user clicks on <span> (x), close the modal
 closeModalButton.onclick = function () {
   window.location.reload();
 };
-
-// When the user clicks anywhere outside of the modal, close it
-// window.onclick = function (event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// };
-
-// AUDIO
